@@ -24,6 +24,7 @@ const hide = (elem) => {
 let activeNote = {};
 
 // GET the notes from db.json
+// Called when app page is rendered
 const getNotes = () =>
   fetch('/api/notes', {
     method: 'GET',
@@ -129,6 +130,7 @@ const handleRenderBtns = () => {
 };
 
 // Render the list of note titles in the sidebar
+// input is the results from the fetch/GET operation
 const renderNoteList = async (notes) => {
   let jsonNotes = await notes.json();
   if (window.location.pathname === '/notes') {

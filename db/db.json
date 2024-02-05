@@ -1,6 +1,22 @@
 [
-    {
-        "title":"Test Title",
-        "text":"Test text"
-    }
+  {
+    "id": "87bf92ab-0b61-468e-8804-bf0bb5e5e056",
+    "title": "This is the first note",
+    "text": "With some text"
+  },
+  {
+    "id": "45f79e58-4aed-41d3-be8a-ebce6ce6d732",
+    "title": "Make lunch",
+    "text": "At noon"
+  },
+  {
+    "id": "9495a8e5-4efd-4afe-8993-ca6a0cdb8a0c",
+    "title": "Take speaker to breakfast",
+    "text": "Meet at the cottage"
+  },
+  {
+    "id": "7ce5d4d3-c745-4a46-8410-aca50780cc86",
+    "title": "Dinner with the family",
+    "text": "Pasta night!"
+  }
 ]

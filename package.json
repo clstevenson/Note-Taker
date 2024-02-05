@@ -9,6 +9,7 @@
   "author": "Chris Stevenson and Coding Bootcamp",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.16.4"
+    "express": "^4.16.4",
+    "uuid": "^9.0.1"
   }
 }

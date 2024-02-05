@@ -56,6 +56,26 @@ app.post("/api/notes", (req, res) => {
     });
 });
 
+// delete a note
+app.delete("/api/notes/:id", (req, res) => {
+  const ID = req.params.id;
+  fs.readFile('./db/db.json')
+    .then(data => JSON.parse(data))
+    .then(data => data.filter(note => note.id !== ID))
+    .then(data => {
+      fs.writeFile('./db/db.json', JSON.stringify(data, null, 2));
+      const response = {
+        status: "success",
+        body: data
+      }
+      res.json(response);
+    })
+    .catch(err => {
+      console.log(err);
+      res.send("Error in saving note.")
+    });
+});
+
 // now serve public/html pages
 app
   .use(express.static('public')) // serve static assets

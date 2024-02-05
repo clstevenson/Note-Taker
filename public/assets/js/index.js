@@ -1,10 +1,5 @@
-let noteForm;
-let noteTitle;
-let noteText;
-let saveNoteBtn;
-let newNoteBtn;
-let noteList;
-
+// select the elements of the Notes page
+let noteForm, noteTitle, noteText, saveNoteBtn, newNoteBtn, noteList;
 if (window.location.pathname === '/notes') {
   noteForm = document.querySelector('.note-form');
   noteTitle = document.querySelector('.note-title');
@@ -28,6 +23,7 @@ const hide = (elem) => {
 // activeNote is used to keep track of the note in the textarea
 let activeNote = {};
 
+// GET the notes from db.json
 const getNotes = () =>
   fetch('/api/notes', {
     method: 'GET',
@@ -36,6 +32,7 @@ const getNotes = () =>
     }
   });
 
+// POST the notes to db.json
 const saveNote = (note) =>
   fetch('/api/notes', {
     method: 'POST',
@@ -45,6 +42,7 @@ const saveNote = (note) =>
     body: JSON.stringify(note)
   });
 
+// DELETE from db.json the note specified by the ID
 const deleteNote = (id) =>
   fetch(`/api/notes/${id}`, {
     method: 'DELETE',
@@ -53,6 +51,7 @@ const deleteNote = (id) =>
     }
   });
 
+// function called by the "Clear Form" button (clearBtn)
 const renderActiveNote = () => {
   hide(saveNoteBtn);
   hide(clearBtn);
@@ -72,6 +71,7 @@ const renderActiveNote = () => {
   }
 };
 
+// function called by the "Save Note" button (saveNoteBtn)
 const handleNoteSave = () => {
   const newNote = {
     title: noteTitle.value,
@@ -83,7 +83,7 @@ const handleNoteSave = () => {
   });
 };
 
-// Delete the clicked note
+// Delete the clicked note, called by the "Trashcan" icon (delBtnEl)
 const handleNoteDelete = (e) => {
   // Prevents the click listener for the list from being called when the button inside of it is clicked
   e.stopPropagation();
@@ -102,6 +102,7 @@ const handleNoteDelete = (e) => {
 };
 
 // Sets the activeNote and displays it
+// Span element
 const handleNoteView = (e) => {
   e.preventDefault();
   activeNote = JSON.parse(e.target.parentElement.getAttribute('data-note'));
@@ -127,7 +128,7 @@ const handleRenderBtns = () => {
   }
 };
 
-// Render the list of note titles
+// Render the list of note titles in the sidebar
 const renderNoteList = async (notes) => {
   let jsonNotes = await notes.json();
   if (window.location.pathname === '/notes') {
@@ -184,6 +185,9 @@ const renderNoteList = async (notes) => {
 // Gets notes from the db and renders them to the sidebar
 const getAndRenderNotes = () => getNotes().then(renderNoteList);
 
+/*
+ * Set all the event listeners
+ */
 if (window.location.pathname === '/notes') {
   saveNoteBtn.addEventListener('click', handleNoteSave);
   newNoteBtn.addEventListener('click', handleNewNoteView);
@@ -191,4 +195,5 @@ if (window.location.pathname === '/notes') {
   noteForm.addEventListener('input', handleRenderBtns);
 }
 
+// begin the app
 getAndRenderNotes();

@@ -1,7 +1,7 @@
 # Note Taker
 
 ## Description
-This is a simple note-taking app. Notes can be added and deleted as shown in the screenshot below.
+This is a simple note-taking app. Notes can be viewed, added and deleted as shown in the screenshot below.
 
 ![screenshot](./assets/images/screenshot.png)
 
